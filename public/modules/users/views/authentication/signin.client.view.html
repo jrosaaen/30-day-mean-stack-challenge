@@ -1,29 +1,34 @@
 <section class="row" data-ng-controller="AuthenticationController">
-    <h3 class="col-md-12 text-center">Login</h3>
-    <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4">
+    <div class="col-xs-offset-1 col-xs-10 col-md-offset-4 col-md-4 login-form-bg">
+        <h3 class="col-md-12 text-center">Login</h3>
         <form data-ng-submit="signin()" class="signin form-horizontal" autocomplete="off">
             <fieldset>
-                <div data-ng-show="error" class="text-center text-danger">
-                    <strong data-ng-bind="error"></strong>
+                <div class="form-group">
+                    <div data-ng-show="error" class="text-center text-danger">
+                        <div class="alert alert-danger" role="alert">
+                            <strong data-ng-bind="error"></strong>
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
-                  <div class="input-group input-group-lg">
-                      <span class="input-group-addon">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon">
                         <i class="text-muted glyphicon glyphicon-user"></i>
                       </span>
-                      <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
-                  </div>
+                        <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username">
+                    </div>
                 </div>
                 <div class="form-group">
-                  <div class="input-group input-group-lg">
-                      <span class="input-group-addon">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-addon">
                         <i class="text-muted glyphicon glyphicon-asterisk"></i>
                       </span>
-                      <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
-                  </div>
+                        <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Password">
+                    </div>
                 </div>
+              </br>
                 <div class="text-center form-group">
-                    <button type="submit" class="btn btn-success btn-lg btn-block">Login</button>
+                    <button type="submit" class="btn btn-success btn-lg btn-block">Log In</button>
                 </div>
                 <div class="forgot-password">
                     <a href="/#!/password/forgot">Forgot your password?</a>&nbsp; Or &nbsp;
