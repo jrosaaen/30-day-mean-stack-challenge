@@ -13,7 +13,7 @@
 	position: absolute;
 }
 
-.login-form-bg {
+.login-form-bg, .signup-form-bg {
   background-color: white;
   border: 15px solid;
   border-radius: 15px;
