@@ -3,20 +3,98 @@
         <h1>New Customer</h1>
     </div>
     <div class="col-md-12">
-        <form class="form-horizontal" data-ng-submit="create()" novalidate>
+        <form class="" data-ng-submit="create()" novalidate>
             <fieldset>
-                <div class="form-group">
-                    <label class="control-label" for="name">Name</label>
-                    <div class="controls">
-                        <input type="text" data-ng-model="name" id="name" class="form-control" placeholder="Name" required>
+                <div class="row">
+                    <div class="col-sm-6 text-center">
+                        <i class="glyphicon glyphicon-user"></i>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="firstname"> First Name</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="firstName" id="firstname" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="lastname"> Last Name</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="lastName" id="lastname" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="city"> City</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="city" id="city" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="country"> Country</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="country" id="country" class="form-control">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-default">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-push-6">
+                        <div class="form-group">
+                            <label class="control-label" for="phone"> Phone</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="phone" id="phone" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="email"> Email</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="email" id="email" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-sm-pull-6">
+                        <div class="form-group">
+                            <label class="control-label" for="referred"> Referred</label>
+                            <div class="controls">
+                                <input type="checkbox" data-ng-model="referred" id="referred" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="channel"> Channel</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="channel" id="channel" class="form-control">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="industry"> Industry</label>
+                            <div class="controls">
+                                <input type="text" data-ng-model="industry" id="industry" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-lg btn-success">
+                                Save & Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
             </fieldset>
         </form>
     </div>
