@@ -1,8 +1,10 @@
 .cust-profile {
-  font-size: 250px;
+    font-size: 250px;
 }
-
+.cust-list {
+    font-size: 100px;
+}
 .checkbox-left {
-  width: 10%;
-  text-align: left;
+    width: 10%;
+    text-align: left;
 }
