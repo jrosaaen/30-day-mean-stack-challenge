@@ -22,7 +22,10 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', '$loca
                     $scope.customer = customer;
 
                     $scope.ok = function() {
-                        $modalInstance.close($scope.customer);
+
+                        if (updateCustomerForm.$valid){
+                            $modalInstance.close($scope.customer);
+                        }
                     };
 
                     $scope.cancel = function() {
