@@ -174,4 +174,8 @@ module.exports = function(grunt) {
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+	
+	// Add gruntDevTools
+	grunt.loadNpmTasks('grunt-devtools');
+
 };
