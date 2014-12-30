@@ -2,7 +2,7 @@
     font-size: 250px;
 }
 .cust-list {
-    font-size: 100px;
+    font-size: 150px;
 }
 .checkbox-left {
     width: 10%;
@@ -11,4 +11,13 @@
 
 .text-pink {
 	color: #EC407A;
+}
+
+.extra-space {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+	margin: 0px 0 0 !important;
 }
