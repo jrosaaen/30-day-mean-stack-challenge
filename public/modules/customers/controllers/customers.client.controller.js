@@ -13,7 +13,7 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', '$loca
         this.customers = Customers.query();
 
 
- //open a modal window to create a single customer record
+        //open a modal window to create a single customer record
         this.modalCreate = function(size) {
 
             var modalInstance = $modal.open({
@@ -23,9 +23,9 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', '$loca
 
                     $scope.ok = function() {
 
-                        if (createCustomerForm.$valid){
+                        // if (createCustomerForm.$valid){
                         $modalInstance.close();
-                        }
+                        // }
                     };
 
                     $scope.cancel = function() {
@@ -62,9 +62,9 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', '$loca
 
                     $scope.ok = function() {
 
-                        if (updateCustomerForm.$valid){
+                        // if (updateCustomerForm.$valid){
                         $modalInstance.close($scope.customer);
-                        }
+                        // }
                     };
 
                     $scope.cancel = function() {
@@ -89,29 +89,27 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', '$loca
         };
 
 
+        // Remove existing Customer
+        this.remove = function(customer) {
+            if (customer) {
+                customer.$remove();
 
-// Remove existing Customer
-             this.remove = function(customer) {
-                 if (customer) {
-                     customer.$remove();
-
-                     for (var i in this.customers) {
-                         if (this.customers[i] === customer) {
-                             this.customers.splice(i, 1);
-                         }
-                     }
-                 } else {
-                     this.customer.$remove(function() {
-                     });
-                 }
-             };
-
+                for (var i in this.customers) {
+                    if (this.customers[i] === customer) {
+                        this.customers.splice(i, 1);
+                    }
+                }
+            } else {
+                this.customer.$remove(function() {
+                });
+            }
+        };
 
     }
 ]);
 
-customersApp.controller('CustomersCreateController', ['$scope', 'Customers',
-    function($scope, Customers) {
+customersApp.controller('CustomersCreateController', ['$scope', 'Customers', 'Notify',
+    function($scope, Customers, Notify) {
         // Create new Customer
         this.create = function() {
             // Create new Customer object
@@ -129,23 +127,23 @@ customersApp.controller('CustomersCreateController', ['$scope', 'Customers',
 
             // Redirect after save
             customer.$save(function(response) {
-           
+            
+                Notify.sendMsg('NewCustomer',  {'id': response._id});
 
-                // Clear form fields
-                $scope.firstName = '';
-                $scope.lastName = '';
-                $scope.city = '';
-                $scope.country = '';
-                $scope.industry = '';
-                $scope.email = '';
-                $scope.phone = '';
-                $scope.referred = '';
-                $scope.channel = '';
+                // // Clear form fields
+                // $scope.firstName = '';
+                // $scope.lastName = '';
+                // $scope.city = '';
+                // $scope.country = '';
+                // $scope.industry = '';
+                // $scope.email = '';
+                // $scope.phone = '';
+                // $scope.referred = '';
+                // $scope.channel = '';
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
             });
         };
-
 
     }
 ]);
@@ -165,34 +163,18 @@ customersApp.controller('CustomersUpdateController', ['$scope', 'Customers',
     }
 ]);
 
-customersApp.directive('customerList', [function() {
+customersApp.directive('customerList', ['Customers', 'Notify', function(Customers, Notify) {
     return {
         restrict: 'E',
         transclude: true,
         templateUrl: 'modules/customers/views/customer-list-template.html',
         link: function(scope, element, attrs) {
+          //when a new customer is added, update the customer list
+          Notify.getMsg('NewCustomer', function(event, data) {
 
+              scope.customersCtrl.customers = Customers.query();
+
+          });
         }
     };
 }]);
-
-
-// // Remove existing Customer
-// $scope.remove = function(customer) {
-//  if ( customer ) {
-//      customer.$remove();
-
-//      for (var i in $scope.customers) {
-//          if ($scope.customers [i] === customer) {
-//              $scope.customers.splice(i, 1);
-//          }
-//      }
-//  } else {
-//      $scope.customer.$remove(function() {
-//          $location.path('customers');
-//      });
-//  }
-// };
-
-
-
