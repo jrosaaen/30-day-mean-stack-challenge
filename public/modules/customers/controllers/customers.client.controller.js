@@ -19,7 +19,7 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', '$loca
             var modalInstance = $modal.open({
                 templateUrl: 'modules/customers/views/create-customer.client.view.html',
                 controller: function($scope, $modalInstance) {
-                   
+
 
                     $scope.ok = function() {
 
@@ -35,7 +35,7 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', '$loca
                 },
 
                 size: size
-                
+
             });
 
             modalInstance.result.then(function(selectedItem) {
@@ -46,7 +46,7 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', '$loca
         };
 
 
-            
+
 
 
 
@@ -100,8 +100,7 @@ customersApp.controller('CustomersController', ['$scope', '$stateParams', '$loca
                     }
                 }
             } else {
-                this.customer.$remove(function() {
-                });
+                this.customer.$remove(function() {});
             }
         };
 
@@ -127,8 +126,10 @@ customersApp.controller('CustomersCreateController', ['$scope', 'Customers', 'No
 
             // Redirect after save
             customer.$save(function(response) {
-            
-                Notify.sendMsg('NewCustomer',  {'id': response._id});
+
+                Notify.sendMsg('NewCustomer', {
+                    'id': response._id
+                });
 
                 // // Clear form fields
                 // $scope.firstName = '';
@@ -149,6 +150,13 @@ customersApp.controller('CustomersCreateController', ['$scope', 'Customers', 'No
 ]);
 customersApp.controller('CustomersUpdateController', ['$scope', 'Customers',
     function($scope, Customers) {
+        $scope.channelOptions = [
+            {id: 1 , item: 'Facebook'},
+            {id: 2 , item: 'Twitter'},
+            {id: 3 , item: 'Email'},
+            ];
+
+
         // Update existing Customer
         this.update = function(updatedCustomer) {
             var customer = updatedCustomer;
@@ -169,12 +177,12 @@ customersApp.directive('customerList', ['Customers', 'Notify', function(Customer
         transclude: true,
         templateUrl: 'modules/customers/views/customer-list-template.html',
         link: function(scope, element, attrs) {
-          //when a new customer is added, update the customer list
-          Notify.getMsg('NewCustomer', function(event, data) {
+            //when a new customer is added, update the customer list
+            Notify.getMsg('NewCustomer', function(event, data) {
 
-              scope.customersCtrl.customers = Customers.query();
+                scope.customersCtrl.customers = Customers.query();
 
-          });
+            });
         }
     };
 }]);
