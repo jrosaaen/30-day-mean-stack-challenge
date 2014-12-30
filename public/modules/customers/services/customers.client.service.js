@@ -33,7 +33,7 @@ angular.module('customers')
                 scope.$on('destroy', unbind);
             }
         };
-
+ 
         return notify;
     }])
 ;
